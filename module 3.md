@@ -426,3 +426,91 @@ $$
 | Community Types  | **DHO**   | Disjoint, Hierarchical, Overlapping             |
 
 ---
+
+# Girman-Newmann BFS
+Great — you’ve uploaded two images that illustrate the **Girvan–Newman method** using a 14-node undirected network.
+
+Let’s break it all down step by step:
+
+---
+
+## 🧠 Goal of Girvan–Newman
+
+> Iteratively remove **edges with the highest betweenness** to reveal **community structure**.
+
+This is ideal for **hierarchical community detection** — i.e., you don’t need to predefine the number of communities.
+
+---
+
+## 🔍 Step-by-Step Breakdown of the Example
+
+### 🔹 Initial Graph (First Image)
+
+You’re given a connected network of 14 nodes, visually resembling two clusters:
+
+* **Left cluster**: Nodes 1 to 7
+* **Right cluster**: Nodes 8 to 14
+* Connected by one **bridge edge: 7–8**
+
+---
+
+### 🔹 Edge Betweenness Centrality — Initial Calculation
+
+Betweenness centrality of an edge = number of shortest paths between all node pairs that pass through that edge.
+![image](https://github.com/user-attachments/assets/b6884821-0439-4444-89a3-a318873fe337)
+
+
+The **first image** shows the precomputed values:
+
+| Edge          | Betweenness (Justification)                        |
+| ------------- | -------------------------------------------------- |
+| (7–8)         | $7 \times 7 = 49$ → connects 7 nodes on each side  |
+| (1–3)         | $1 \times 12 = 12$ → paths from 1 to rest of graph |
+| (3–7), (6–7)  | Each = 1 × 6 = 6                                   |
+| (8–9), (8–12) | Each = 3 × 11 = 33                                 |
+
+So, **edge (7–8)** has the **highest** edge betweenness: **49**
+✅ **Remove edge (7–8)**
+
+---
+![image](https://github.com/user-attachments/assets/20459cf2-2f56-4722-a167-13a1e59af028)
+
+## 📉 Image 2: After Step 1
+
+Now that (7–8) is removed, the graph **splits into two components** (connected components):
+
+1. **Left**: Nodes 1–7
+2. **Right**: Nodes 8–14
+
+This is your **first level of community detection**.
+
+---
+
+## 🔁 Recalculate Edge Betweenness Within Each Community
+
+Now we recalculate edge betweenness **within each disconnected component**.
+
+### 🔹 Left Community (Nodes 1–7):
+
+* Nodes {1,2,3,4,5,6,7}
+* Edge (1–3): betweenness = 1 × 5 = **5**
+* (3–7) and (6–7): each = **shared** path → likely between (3–7) and (6–7) = **equal values**
+* All other internal edges serve very few shortest paths.
+
+### 🔹 Right Community (Nodes 8–14):
+
+* Nodes {8–14}
+* Edge (8–12): betweenness = $3 \times 4 = 12$
+* Other edges (8–9), etc., will follow similar rebalanced values.
+
+---
+
+## 🧮 Summary Table of What Happened
+
+| Step | Removed Edge | Why? (Max Betweenness)     | Result                       |
+| ---- | ------------ | -------------------------- | ---------------------------- |
+| 0    | ---          | (7–8) = 49                 | Network intact               |
+| 1    | (7–8)        | → Split into 2 communities | Community structure revealed |
+
+---
+

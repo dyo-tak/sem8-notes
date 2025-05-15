@@ -466,7 +466,7 @@ The **first image** shows the precomputed values:
 | ------------- | -------------------------------------------------- |
 | (7–8)         | $7 \times 7 = 49$ → connects 7 nodes on each side  |
 | (1–3)         | $1 \times 12 = 12$ → paths from 1 to rest of graph |
-| (3–7), (6–7)  | Each = 1 × 6 = 6                                   |
+| (3–7), (6–7)  | Each = 3 × 11 = 33                                 |
 | (8–9), (8–12) | Each = 3 × 11 = 33                                 |
 
 So, **edge (7–8)** has the **highest** edge betweenness: **49**

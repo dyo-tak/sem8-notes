@@ -35,6 +35,9 @@ Core standard for setting up and certifying an EMS.
 * **ISO 14030**: Environmental performance evaluation
 * **ISO 14031**: Guidelines on environmental indicators
 * **ISO/NP 14030**: Green bonds for environmental assets
+* * **ISO 14064**: Green house gases 
+* * **ISO 14046**: Water footprint management
+  
 
 ---
 
